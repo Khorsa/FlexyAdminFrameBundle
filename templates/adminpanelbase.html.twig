@@ -124,7 +124,7 @@
         </ol>
     </nav>
 
-    {% for label, messages in app.flashes(['success', 'warning', 'danger']) %}
+    {% for label, messages in app.flashes(['success', 'warning', 'danger', 'error']) %}
         {% for message in messages %}
 
             <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
