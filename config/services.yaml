@@ -1,0 +1,23 @@
+parameters:
+# Здесь могут быть параметры бандла
+
+services:
+
+  # Конфигурация для всех сервисов  этого файла по умолчанию
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+
+  # Регистрируем контроллеры бандла и репозиторий как DI-сервисы
+  flexycms\FlexyAdminFrameBundle\Controller\AdminBaseController: ~
+
+
+  flexyadminframe_modules_route_loader:
+    class: flexycms\FlexyAdminFrameBundle\Services\ModulesRouteLoader
+    autowire: true
+    autoconfigure: true
+    tags: [routing.loader]
+
+
+

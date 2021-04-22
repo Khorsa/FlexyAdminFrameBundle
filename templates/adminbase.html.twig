@@ -1,0 +1,29 @@
+{% use 'form_div_layout.html.twig' with checkbox_widget as base_checkbox_widget %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Панель управления{% endblock %}</title>
+
+    {% for s in styles %}
+        <link href="{{ s }}" rel="stylesheet" />
+    {% endfor %}
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body class="menu-full">
+
+{% block body %}{% endblock %}
+
+
+{% for s in scripts %}
+    {% autoescape false %}
+        <script src="{{ s }}"></script>
+    {% endautoescape %}
+{% endfor %}
+{% block javascripts %}{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+flexyadminframe_routes:
+  resource: .
+  type: flexy_modules_route_loader

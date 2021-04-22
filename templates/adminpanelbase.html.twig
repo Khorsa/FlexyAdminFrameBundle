@@ -1,0 +1,166 @@
+{% extends '@FlexyAdminFrame/adminbase.html.twig' %}
+
+{% block body %}
+
+<header>
+
+
+    <div class="collapse-button">
+        <a href="#" class="hide-menu-ref"><i class="fas fa-outdent"></i></a>
+        <a href="#" class="show-menu-ref"><i class="fas fa-indent"></i></a>
+    </div>
+
+    <div class="title">
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div class="exit">
+        <a href="{{ path("app_logout") }}"><i class="fas fa-sign-out-alt"></i> выйти</a>
+    </div>
+</header>
+
+
+
+<div class="admin-nav-menu">
+    <ul>
+        <li>
+            <a href="{{ path('admin_home') }}"><i class="far fa-calendar-alt"></i><span>Панель управления</span></a>
+        </li>
+
+        <li>
+            <a href="#" class="parent" id="menu-settings"><i class="fas fa-tools"></i><span>Настройки</span></a>
+            <ul>
+                <li><a href="{{ path('admin_user') }}">Пользователи</a></li>
+                <li><a href="{{ path('admin_articletypes') }}">Типы статей</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="parent" id="menu-structure"><i class="fas fa-project-diagram"></i><span>Структура сайта</span></a>
+            <ul>
+                <li><a href="{{ path('admin_templates') }}">Шаблоны</a></li>
+                <li><a href="{{ path('admin_seosettings') }}">Маршруты</a></li>
+                <li><a href="{{ path('admin_filemanager') }}">Файловый менеджер</a></li>
+                <li><a href="{{ path('admin_cache') }}">Управление кэшем</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="parent" id="menu-articles"><i class="far fa-file-alt"></i><span>Статьи</span></a>
+            <ul>
+                <li><a href="{{ path('admin_articlerubrics') }}">Рубрики</a></li>
+                <li><a href="{{ path('admin_articlecategories') }}">Все статьи</a></li>
+
+                {% for categoryMenu in categoryMenus %}
+                    <li><a href="{{ path('admin_articlecategories', {'parentid': categoryMenu['id']}) }}"><i>{{ categoryMenu['name'] }}</i></a></li>
+                {% endfor %}
+
+            </ul>
+        </li>
+
+{#
+        <li>
+            <a href="#" class="parent" id="menu-articles"><i class="fas fa-hand-holding-medical"></i><span>Запись</span></a>
+            <ul>
+                <li><a href="{{ path('admin_aptservices') }}">Услуги</a></li>
+                <li><a href="{{ path('admin_aptspecialists') }}">Специалисты</a></li>
+                <li><a href="{{ path('admin_aptspecialists') }}">Записи</a></li>
+            </ul>
+        </li>
+#}
+
+{#
+        <li>
+            <a href="#" class="parent" id="menu-articles"><i class="fas fa-map-marked-alt"></i><span>Zemsale</span></a>
+            <ul>
+                <li><a href="{{ path('admin_zemgroups') }}">Группы</a></li>
+                <li><a href="{{ path('admin_zemobjects') }}">Объекты</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#" class="parent" id="menu-articles"><i class="far fa-list-alt"></i><span>Справочники</span></a>
+            <ul>
+                <li><a href="{{ path('admin_zemobjecttype') }}">Типы объектов</a></li>
+                <li><a href="{{ path('admin_zemstatus') }}">Статусы объектов</a></li>
+                <li><a href="{{ path('admin_addroblast') }}">Области</a></li>
+                <li><a href="{{ path('admin_addrdistrict') }}">Районы</a></li>
+                <li><a href="{{ path('admin_addrsettlement') }}">Поселения</a></li>
+
+            </ul>
+        </li>
+#}
+
+    </ul>
+</div>
+
+
+
+
+{#
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_home' %} active{% endif %}" href="{{ path('admin_home') }}">Главная</a>
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_templates' %} active{% endif %}" href="{{ path('admin_templates') }}">Шаблоны сайта</a>
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_cache' %} active{% endif %}" href="{{ path('admin_cache') }}">Управление кэшем</a>
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_user' %} active{% endif %}" href="{{ path('admin_user') }}">Пользователи</a>
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_filemanager' %} active{% endif %}" href="{{ path('admin_filemanager') }}">Файловый менеджер</a>
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_articletypes' %} active{% endif %}" href="{{ path('admin_articletypes') }}">Типы статей</a>
+                <a class="list-group-item list-group-item-action{% if app.request.get('_route') == 'admin_articlecategories' %} active{% endif %}" href="{{ path('admin_articlecategories') }}">Статьи</a>
+            </div>
+#}
+
+
+<div class="admin-content">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% for breadcrumb in breadcrumbs.get() %}
+                {% if loop.last %}
+                    <li class="breadcrumb-item active"  aria-current="page">{{ breadcrumb.label }}</li>
+                {% else %}
+                    <li class="breadcrumb-item"><a href="{{ breadcrumb.path }}">{{ breadcrumb.label }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </nav>
+
+    {% for label, messages in app.flashes(['success', 'warning', 'danger']) %}
+        {% for message in messages %}
+
+            <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+
+
+
+<div class="modal fade" id="flexyConfirmPopup" tabindex="-1" aria-labelledby="Confirm" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary flexyConfirmOK">ОК</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

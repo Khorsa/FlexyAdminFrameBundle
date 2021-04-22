@@ -1,0 +1,3 @@
+flexyadminframe_routes:
+  type: annotation
+  resource: '../src/Controller/'
