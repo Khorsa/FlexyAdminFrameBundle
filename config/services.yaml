@@ -1,5 +1,6 @@
 parameters:
 # Здесь могут быть параметры бандла
+  panelMenuTemplate: "@@FlexyAdminFrame/panelmenu.html.twig"
 
 services:
 
@@ -11,6 +12,10 @@ services:
 
   # Регистрируем контроллеры бандла и репозиторий как DI-сервисы
   flexycms\FlexyAdminFrameBundle\Controller\AdminBaseController: ~
+
+  flexycms\FlexyAdminFrameBundle\Services\PanelMenuGenerator:
+    calls:
+      - setInjection: [ 'Symfony\Component\Routing\Generator\UrlGeneratorInterface', 'flexycms\FlexyArticlesBundle\Repository\ArticleCategoryRepository' ]
 
 
   flexyadminframe_modules_route_loader:

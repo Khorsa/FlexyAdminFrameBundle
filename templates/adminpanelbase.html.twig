@@ -22,76 +22,10 @@
 
 
 <div class="admin-nav-menu">
-    <ul>
-        <li>
-            <a href="{{ path('admin_home') }}"><i class="far fa-calendar-alt"></i><span>Панель управления</span></a>
-        </li>
 
-        <li>
-            <a href="#" class="parent" id="menu-settings"><i class="fas fa-tools"></i><span>Настройки</span></a>
-            <ul>
-                <li><a href="{{ path('admin_user') }}">Пользователи</a></li>
-                <li><a href="{{ path('admin_articletypes') }}">Типы статей</a></li>
-            </ul>
-        </li>
+    {% include (panelMenuTemplate) %}
 
-        <li>
-            <a href="#" class="parent" id="menu-structure"><i class="fas fa-project-diagram"></i><span>Структура сайта</span></a>
-            <ul>
-                <li><a href="{{ path('admin_templates') }}">Шаблоны</a></li>
-                <li><a href="{{ path('admin_seosettings') }}">Маршруты</a></li>
-                <li><a href="{{ path('admin_filemanager') }}">Файловый менеджер</a></li>
-                <li><a href="{{ path('admin_cache') }}">Управление кэшем</a></li>
-            </ul>
-        </li>
 
-        <li>
-            <a href="#" class="parent" id="menu-articles"><i class="far fa-file-alt"></i><span>Статьи</span></a>
-            <ul>
-                <li><a href="{{ path('admin_articlerubrics') }}">Рубрики</a></li>
-                <li><a href="{{ path('admin_articlecategories') }}">Все статьи</a></li>
-
-                {% for categoryMenu in categoryMenus %}
-                    <li><a href="{{ path('admin_articlecategories', {'parentid': categoryMenu['id']}) }}"><i>{{ categoryMenu['name'] }}</i></a></li>
-                {% endfor %}
-
-            </ul>
-        </li>
-
-{#
-        <li>
-            <a href="#" class="parent" id="menu-articles"><i class="fas fa-hand-holding-medical"></i><span>Запись</span></a>
-            <ul>
-                <li><a href="{{ path('admin_aptservices') }}">Услуги</a></li>
-                <li><a href="{{ path('admin_aptspecialists') }}">Специалисты</a></li>
-                <li><a href="{{ path('admin_aptspecialists') }}">Записи</a></li>
-            </ul>
-        </li>
-#}
-
-{#
-        <li>
-            <a href="#" class="parent" id="menu-articles"><i class="fas fa-map-marked-alt"></i><span>Zemsale</span></a>
-            <ul>
-                <li><a href="{{ path('admin_zemgroups') }}">Группы</a></li>
-                <li><a href="{{ path('admin_zemobjects') }}">Объекты</a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="#" class="parent" id="menu-articles"><i class="far fa-list-alt"></i><span>Справочники</span></a>
-            <ul>
-                <li><a href="{{ path('admin_zemobjecttype') }}">Типы объектов</a></li>
-                <li><a href="{{ path('admin_zemstatus') }}">Статусы объектов</a></li>
-                <li><a href="{{ path('admin_addroblast') }}">Области</a></li>
-                <li><a href="{{ path('admin_addrdistrict') }}">Районы</a></li>
-                <li><a href="{{ path('admin_addrsettlement') }}">Поселения</a></li>
-
-            </ul>
-        </li>
-#}
-
-    </ul>
 </div>
 
 

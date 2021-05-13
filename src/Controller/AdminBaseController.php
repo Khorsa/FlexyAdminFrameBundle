@@ -4,7 +4,9 @@ namespace flexycms\FlexyAdminFrameBundle\Controller;
 
 use flexycms\AssetPackBundle\Utils\AssetPack;
 use flexycms\BreadcrumbsBundle\Utils\Breadcrumbs;
+use flexycms\FlexyArticlesBundle\Repository\ArticleCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AdminBaseController extends AbstractController
 {
@@ -18,6 +20,7 @@ class AdminBaseController extends AbstractController
         //Собираем категории статей для меню
         $repo = $this->getDoctrine()->getManager()->getRepository('flexycms\FlexyArticlesBundle\Entity\ArticleCategory');
         $cats = $repo->getForMenu();
+
         $categoryMenus = array();
         foreach($cats as $cat)
         {
@@ -28,11 +31,11 @@ class AdminBaseController extends AbstractController
         }
 
         $forRender['categoryMenus'] = $categoryMenus;
+        $forRender['panelMenuTemplate'] = $this->getParameter('panelMenuTemplate');
+
 
         $forRender['title'] = "Панель управления";
         $forRender['breadcrumbs'] = $breadcrumbs;
-
-        $packer = new AssetPack();
 
         $cssArray = [
             '/public/build/backend/external/codemirror/lib/codemirror.css',
@@ -41,7 +44,7 @@ class AdminBaseController extends AbstractController
             '/public/build/backend/external/datatables/Responsive-2.2.6/css/responsive.bootstrap4.css',
             '/public/build/backend/external/datatables/Buttons-1.6.5/css/buttons.bootstrap4.css',
 
- //           '/public/assets/common/gijgo/css/gijgo.min.css',
+            '/public/build/backend/external/gijgo/css/gijgo.min.css',
         ];
 
         $scriptArray = [
@@ -70,12 +73,10 @@ class AdminBaseController extends AbstractController
 
             '/public/build/backend/external/tinymce/tinymce.js',
 
-
+            '/public/build/backend/external/gijgo/js/gijgo.js',
+            '/public/build/backend/external/gijgo/js/messages/messages.ru-ru.min.js',
 
             '/public/build/backend/js/scripts.js',
-
-//            '/public/assets/common/gijgo/js/gijgo.js',
-//            '/public/assets/common/gijgo/js/messages/messages.ru-ru.min.js',
         ];
 
         $forRender['styles'] = $cssArray;
