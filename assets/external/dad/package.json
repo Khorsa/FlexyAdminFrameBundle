@@ -1,0 +1,27 @@
+{
+  "name": "jquery.dad.js",
+  "version": "2.0.3",
+  "description": "drag and drop plugin",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./scripts/devserver.js",
+    "build": "node ./scripts/build.js",
+    "release": "node ./scripts/release.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williammustaffa/jquery.dad.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williammustaffa/jquery.dad.js/issues"
+  },
+  "homepage": "https://github.com/williammustaffa/jquery.dad.js#readme",
+  "devDependencies": {
+    "@node-minify/core": "^6.0.0",
+    "@node-minify/uglify-js": "^6.0.0",
+    "archiver": "^5.0.0",
+    "live-server": "^1.2.1"
+  }
+}

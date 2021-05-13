@@ -11,11 +11,14 @@
     {% endfor %}
     {% block stylesheets %}{% endblock %}
 
+    {{ encore_entry_link_tags('backend', null, 'backend') }}
+
 </head>
 <body class="menu-full">
 
 {% block body %}{% endblock %}
 
+{{ encore_entry_script_tags('backend', null, 'backend') }}
 
 {% for s in scripts %}
     {% autoescape false %}

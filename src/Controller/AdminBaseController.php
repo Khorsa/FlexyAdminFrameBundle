@@ -35,57 +35,48 @@ class AdminBaseController extends AbstractController
         $packer = new AssetPack();
 
         $cssArray = [
-            '/public/assets/common/codemirror/lib/codemirror.css',
+            '/public/build/backend/external/codemirror/lib/codemirror.css',
 
-            "/vendor/twbs/bootstrap/dist/css/bootstrap.min.css",
-            "/public/assets/common/awesome/css/all.min.css",
-            '/public/assets/common/datatables/datatables.min.css',
-            '/public/assets/common/datatables/Responsive-2.2.6/css/responsive.bootstrap4.css',
-            '/public/assets/common/datatables/Buttons-1.6.5/css/buttons.bootstrap4.css',
+            '/public/build/backend/external/datatables/datatables.min.css',
+            '/public/build/backend/external/datatables/Responsive-2.2.6/css/responsive.bootstrap4.css',
+            '/public/build/backend/external/datatables/Buttons-1.6.5/css/buttons.bootstrap4.css',
 
-            '/public/assets/common/gijgo/css/gijgo.min.css',
-
-            $packer->minimizeCSS('/public/assets/admin/css/fonts.css'),
-            $packer->minimizeCSS($packer->compileSCSS("/public/assets/admin/css/styles.scss")),
+ //           '/public/assets/common/gijgo/css/gijgo.min.css',
         ];
 
         $scriptArray = [
-            '/public/assets/common/codemirror/lib/codemirror.js',
-            '/public/assets/common/codemirror/addon/edit/matchbrackets.js',
-            '/public/assets/common/codemirror/mode/htmlmixed/htmlmixed.js',
-            '/public/assets/common/codemirror/mode/php/php.js',
-            '/public/assets/common/codemirror/mode/xml/xml.js',
-            '/public/assets/common/codemirror/mode/javascript/javascript.js',
-            '/public/assets/common/codemirror/mode/css/css.js',
-            '/public/assets/common/codemirror/mode/clike/clike.js',
-            '/public/assets/common/codemirror/mode/twig/twig.js',
+            '/public/build/backend/external/codemirror/lib/codemirror.js',
+            '/public/build/backend/external/codemirror/addon/edit/matchbrackets.js',
+            '/public/build/backend/external/codemirror/mode/htmlmixed/htmlmixed.js',
+            '/public/build/backend/external/codemirror/mode/php/php.js',
+            '/public/build/backend/external/codemirror/mode/xml/xml.js',
+            '/public/build/backend/external/codemirror/mode/javascript/javascript.js',
+            '/public/build/backend/external/codemirror/mode/css/css.js',
+            '/public/build/backend/external/codemirror/mode/clike/clike.js',
+            '/public/build/backend/external/codemirror/mode/twig/twig.js',
 
-            '/vendor/components/jquery/jquery.min.js',
-            '/vendor/twbs/bootstrap/dist/js/bootstrap.bundle.min.js',
-            '/vendor/tinymce/tinymce/tinymce.js',
 
-            '/public/assets/common/datatables/datatables.js',
-            '/public/assets/common/datatables/MomentPlugin/moment.min.js',
-            '/public/assets/common/datatables/MomentPlugin/datetime-moment.js',
+            '/public/build/backend/external/datatables/datatables.js',
+            '/public/build/backend/external/datatables/MomentPlugin/moment.min.js',
+            '/public/build/backend/external/datatables/MomentPlugin/datetime-moment.js',
 
-            '/public/assets/common/dad/dist/jquery.dad.min.js',
+            '/public/build/backend/external/datatables/Select-1.3.1/js/dataTables.select.js',
+            '/public/build/backend/external/datatables/Select-1.3.1/js/select.bootstrap4.js',
+            '/public/build/backend/external/datatables/Buttons-1.6.5/js/dataTables.buttons.js',
+            '/public/build/backend/external/datatables/Buttons-1.6.5/js/buttons.bootstrap4.js',
+            '/public/build/backend/external/datatables/Buttons-1.6.5/js/buttons.print.js',
 
-            '/public/assets/common/gijgo/js/gijgo.js',
-            '/public/assets/common/gijgo/js/messages/messages.ru-ru.min.js',
+            '/public/build/backend/external/dad/dist/jquery.dad.min.js',
 
-            '/public/assets/admin/js/jquery.cookie.js',
-            '/public/assets/admin/js/md5.min.js',
-            '/public/assets/admin/js/scripts.js',
+            '/public/build/backend/external/tinymce/tinymce.js',
+
+
+
+            '/public/build/backend/js/scripts.js',
+
+//            '/public/assets/common/gijgo/js/gijgo.js',
+//            '/public/assets/common/gijgo/js/messages/messages.ru-ru.min.js',
         ];
-
-
-
-        $scriptArray[] = '/public/assets/common/datatables/Select-1.3.1/js/dataTables.select.js';
-        $scriptArray[] = '/public/assets/common/datatables/Select-1.3.1/js/select.bootstrap4.js';
-
-        $scriptArray[] = '/public/assets/common/datatables/Buttons-1.6.5/js/dataTables.buttons.js';
-        $scriptArray[] = '/public/assets/common/datatables/Buttons-1.6.5/js/buttons.bootstrap4.js';
-        $scriptArray[] = '/public/assets/common/datatables/Buttons-1.6.5/js/buttons.print.js';
 
         $forRender['styles'] = $cssArray;
 
