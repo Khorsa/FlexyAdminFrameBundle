@@ -16,6 +16,7 @@ global.$ = global.jQuery = $;
 
 
 import "/vendor/twbs/bootstrap/scss/bootstrap.scss";
+import "/vendor/twbs/bootstrap/dist/js/bootstrap.js";
 import '@fortawesome/fontawesome-free/css/all.css';
 
 
