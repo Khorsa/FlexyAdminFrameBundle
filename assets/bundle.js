@@ -19,6 +19,13 @@ import "/vendor/twbs/bootstrap/scss/bootstrap.scss";
 import "/vendor/twbs/bootstrap/dist/js/bootstrap.js";
 import '@fortawesome/fontawesome-free/css/all.css';
 
+import "moment/moment.js";
+//import "/vendor/eonasdan/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js";
+//import "/vendor/eonasdan/bootstrap-datetimepicker/build/sass/bootstrap-datetimepicker.css";
+
+import "jquery-datetimepicker";
+import "jquery-datetimepicker/build/jquery.datetimepicker.min.css";
+
 
 import './styles/styles.scss';
 import './styles/fonts.css';

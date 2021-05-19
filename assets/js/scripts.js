@@ -380,8 +380,32 @@ $(document).ready(function() {
 
 
     mirrors.init();
-
+    $.datetimepicker.setLocale('ru');
     $(".js-datepicker").not("[readonly]").each(function() {
+
+        if ($(this).data('type') === 'date') {
+            $(this).datetimepicker({
+                format: 'd.m.Y',
+                timepicker: false
+            });
+        }
+
+        if ($(this).data('type') === 'time') {
+            $(this).datetimepicker({
+                format: 'H:i',
+                datepicker: false
+            });
+        }
+
+        if ($(this).data('type') === 'datetime') {
+            $(this).datetimepicker({
+                format: 'd.m.Y H:i',
+            });
+        }
+
+
+        //$(this).datetimepicker();
+        /*
         $(this).datetimepicker({
             uiLibrary: 'bootstrap4',
             modal: false,
@@ -390,7 +414,13 @@ $(document).ready(function() {
             locale: 'ru-ru',
             format: 'yyyy-mm-dd HH:MM:ss'
         });
+
+         */
     });
+
+
+
+
 
 // Using font-awesome 5 icons
     /*

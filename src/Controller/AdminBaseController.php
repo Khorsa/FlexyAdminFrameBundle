@@ -44,7 +44,7 @@ class AdminBaseController extends AbstractController
             '/public/build/backend/external/datatables/Responsive-2.2.6/css/responsive.bootstrap4.css',
             '/public/build/backend/external/datatables/Buttons-1.6.5/css/buttons.bootstrap4.css',
 
-            '/public/build/backend/external/gijgo/css/gijgo.min.css',
+//            '/public/build/backend/external/gijgo/css/gijgo.min.css',
         ];
 
         $scriptArray = [
@@ -73,8 +73,8 @@ class AdminBaseController extends AbstractController
 
             '/public/build/backend/external/tinymce/tinymce.js',
 
-            '/public/build/backend/external/gijgo/js/gijgo.js',
-            '/public/build/backend/external/gijgo/js/messages/messages.ru-ru.min.js',
+//            '/public/build/backend/external/gijgo/js/gijgo.js',
+//            '/public/build/backend/external/gijgo/js/messages/messages.ru-ru.min.js',
 
             '/public/build/backend/js/scripts.js',
         ];
