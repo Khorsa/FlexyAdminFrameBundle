@@ -837,3 +837,16 @@ body.menu-collapsed
         float: left;
     }
 }
+
+
+.js-datepicker {
+    width: 200px;
+    text-align: center;
+
+    &[data-type="time"] {
+        width: 100px;
+    }
+    &[data-type="date"] {
+        width: 150px;
+    }
+}

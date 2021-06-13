@@ -1,12 +1,16 @@
 {
   "name": "flexycms/flexyadminframe-bundle",
-  "version": "0.1.4.1",
+  "version": "0.1.4.3",
   "type": "symfony-bundle",
   "description": "Main frame for admin panel",
   "license": "proprietary",
   "require": {
     "php": "^7.3",
-    "tinymce/tinymce": "^5"
+    "phpmailer/phpmailer": "^6.1",
+    "tinymce/tinymce": "^5",
+	"symfony/webpack-encore-bundle": "*",
+	"twbs/bootstrap": "4.5.3",
+	"moment/moment": "*"
   },
   "require-dev": {
   },
