@@ -23,10 +23,13 @@ Options +SymLinksIfOwnerMatch
 #Options +FollowSymlinks
 RewriteRule ^(.+)$ /public/ [QSA,L]";
 
-        $rootDir = __DIR__ . "../../../../..";
+        $rootDir = $container->getParameter('kernel.project_dir');
 
-        if (is_file($rootDir . "/.htaccess")) unlink($rootDir . "/.htaccess");
-        file_put_contents($rootDir . "/.htaccess", $htaccess);
+        dump($rootDir);
+
+        if (!is_file($rootDir . "/.htaccess")) {
+            file_put_contents($rootDir . "/.htaccess", $htaccess);
+        }
 
         if (!is_dir($rootDir . "/public")) mkdir($rootDir . "/public");
         if (!is_dir($rootDir . "/public/uploads")) mkdir($rootDir . "/public/uploads");
