@@ -1,6 +1,6 @@
 {
   "name": "flexycms/flexyadminframe-bundle",
-  "version": "0.1.4.6",
+  "version": "0.1.4.7",
   "type": "symfony-bundle",
   "description": "Main frame for admin panel",
   "license": "proprietary",

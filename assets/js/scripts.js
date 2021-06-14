@@ -284,6 +284,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.btn-danger, .confirm-message', function() {
 
+		let ids = [];
         if ($(this).filter('.collect-selection').length !== 0) {
             ids = collectSelection();
             if (ids.length === 0) return false;

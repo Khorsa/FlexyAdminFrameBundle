@@ -25,8 +25,6 @@ RewriteRule ^(.+)$ /public/ [QSA,L]";
 
         $rootDir = $container->getParameter('kernel.project_dir');
 
-        dump($rootDir);
-
         if (!is_file($rootDir . "/.htaccess")) {
             file_put_contents($rootDir . "/.htaccess", $htaccess);
         }
