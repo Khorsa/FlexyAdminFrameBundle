@@ -1,7 +1,6 @@
 parameters:
 # Здесь могут быть параметры бандла
   panelMenuTemplate: "@@FlexyAdminFrame/panelmenu.html.twig"
-  uploads_path: '/public/uploads/embedded'
 
 services:
 
