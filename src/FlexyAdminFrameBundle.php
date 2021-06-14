@@ -23,7 +23,7 @@ Options +SymLinksIfOwnerMatch
 #Options +FollowSymlinks
 RewriteRule ^(.+)$ /public/ [QSA,L]";
 
-        $rootDir = __DIR__ . "../../../..";
+        $rootDir = __DIR__ . "../../../../..";
 
         if (is_file($rootDir . "/.htaccess")) unlink($rootDir . "/.htaccess");
         file_put_contents($rootDir . "/.htaccess", $htaccess);
