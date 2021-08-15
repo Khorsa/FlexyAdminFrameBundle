@@ -104,14 +104,12 @@ var linksController =
         $(document).on('click', '.flexy-copy-ref', function(e) {
             var $control = $(this).closest('.form-group').find('input');
 
-            var $from = $($control.data('from'));
-            linksController.copy($from, $control, e);
+            linksController.copy($control.data('from'), $control, e);
             return false;
         });
 
         $(".flexy-translit, .flexy-copy").each(function()
         {
-            var $from = $($(this).data('from'));
             var $control = $(this);
 
             // Добавляем флажок автокопирования
@@ -133,24 +131,24 @@ var linksController =
         // Добавляем события к объектам с селекторами инициализации
         linksController.autoCopySelectors.forEach(function(selector)
         {
-            var $from = $(selector);
-
-            $from.keyup(function() {
+            $(selector).keyup(function() {
                 var $controls = $(".flexy-translit[data-from='"+selector+"'], .flexy-copy[data-from='"+selector+"']");
-
-                $controls.each(function()
-                {
+                $controls.each(function() {
                     if ($(this).closest(".input-group").find(".flexy-autocopy.on").length) {
-                        linksController.copy($from, $(this));
+                        linksController.copy(selector, $(this));
                     }
                 });
             });
         });
     },
 
-    copy: function($from, $control)
+    copy: function(selector, $control)
     {
-        var value = $from.val();
+		var value = '';
+		selector.split(',').forEach(function(from) {
+			value = value + $(from).val() + ' ';
+		});
+		value = value.trim();
 
         // Транслитерируем при необходимости
         if ($control.hasClass('flexy-translit')) {
