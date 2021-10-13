@@ -39,7 +39,7 @@ var mirrors = {
 
     init: function()
     {
-        mirrors.editors = new Array();
+        mirrors.editors = [];
 
 
         $('.code-wrapper .editor-control').each(function()
@@ -191,7 +191,15 @@ var flexyCookie = {
     {
         var cookieName = name + "_" + MD5(document.location.href);
         $.cookie(cookieName, value, { expires : 365, path: "/;SameSite=Lax"});
-    }
+    },
+
+    getCommon: function(name) {
+        return $.cookie(name);
+    },
+    setCommon: function(name, value)
+    {
+        $.cookie(name, value, { expires : 365, path: "/;SameSite=Lax"});
+    },
 }
 
 
@@ -506,7 +514,7 @@ $(document).ready(function() {
         $(this).data('ulHeight', h);
 
         let id = $(this).attr('id');
-        let oldState = flexyCookie.get("admin-nav-menu-item-" + id);
+        let oldState = flexyCookie.getCommon("admin-nav-menu-item-" + id);
         if (oldState === 'closed') {
             $(this).addClass("closed");
         }
@@ -528,7 +536,7 @@ $(document).ready(function() {
         if ($(this).hasClass('closed')) {
             itemState = 'closed';
         }
-        flexyCookie.set("admin-nav-menu-item-" + id, itemState);
+        flexyCookie.setCommon("admin-nav-menu-item-" + id, itemState);
 
         return false;
     });
