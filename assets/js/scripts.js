@@ -501,20 +501,35 @@ $(document).ready(function() {
 
 
     $(".admin-nav-menu a.parent").each(function() {
-        var h = $(this).siblings('ul').height();
+        let h = $(this).siblings('ul').height();
         $(this).siblings('ul').css('height', h + 'px');
         $(this).data('ulHeight', h);
+
+        let id = $(this).attr('id');
+        let oldState = flexyCookie.get("admin-nav-menu-item-" + id);
+        if (oldState === 'closed') {
+            $(this).addClass("closed");
+        }
+
     });
 
     $(".admin-nav-menu a.parent").click(function()
     {
-        var h = $(this).data('ulHeight');
+        let h = $(this).data('ulHeight');
         $(this).siblings('ul').css('height', h + 'px');
 
         if ($(this).hasClass('closed') && $body.hasClass('menu-collapsed')) {
             $(".admin-nav-menu a.parent").addClass('closed');
         }
         $(this).toggleClass("closed");
+
+        let id = $(this).attr('id');
+        let itemState = 'open';
+        if ($(this).hasClass('closed')) {
+            itemState = 'closed';
+        }
+        flexyCookie.set("admin-nav-menu-item-" + id, itemState);
+
         return false;
     });
 
